@@ -73,6 +73,15 @@ tasks.withType<JavaCompile>().configureEach {
     options.release.set(javaVersion.toInt())
 }
 
+tasks.jar {
+    val projectName = modId
+    inputs.property("projectName", projectName)
+
+    from(rootProject.file("LICENSE")) {
+        rename { "${it}-$projectName" }
+    }
+}
+
 java {
     withSourcesJar()
 
