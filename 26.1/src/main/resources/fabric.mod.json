@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}+${minecraftVersion}",
+  "name": "${name}",
+  "description": "${description}",
+  "license": "${license}",
+  "authors": [
+    "TheSmoothRere"
+  ],
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "io.github.thesmoothrere.rerelib.RereLib"
+    ],
+    "client": [
+      "io.github.thesmoothrere.rerelib.RereLibClient"
+    ]
+  },
+  "depends": {
+    "minecraft": ">=${minecraftVersion}",
+    "java": "~${javaVersion}"
+  }
+}
