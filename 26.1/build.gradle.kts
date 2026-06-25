@@ -1,5 +1,7 @@
 plugins {
     id("net.fabricmc.fabric-loom")
+    `maven-publish`
+    signing
 }
 
 fun prop(name: String): String {
@@ -12,12 +14,14 @@ val modVersion = prop("modVersion")
 val modId = prop("modId")
 val modName = prop("modName")
 val modDescription = prop("modDescription")
+val modAuthor = prop("modAuthor")
 val modLicense = prop("modLicense")
 val minecraftVersion = prop("minecraftVersion")
 val fabricApiVersion = prop("fabricApiVersion")
 val javaVersion = prop("javaVersion")
 
-version = modVersion
+val mcModVersion = "$modVersion+$minecraftVersion"
+version = mcModVersion
 
 base {
     archivesName.set(modId)
@@ -57,6 +61,7 @@ tasks.processResources {
         "id" to modId,
         "name" to modName,
         "description" to modDescription,
+        "author" to modAuthor,
         "license" to modLicense,
         "minecraftVersion" to minecraftVersion,
         "fabricApiVersion" to fabricApiVersion,
@@ -84,8 +89,66 @@ tasks.jar {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(javaVersion))
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = project.group.toString()
+            artifactId = modId
+            version = mcModVersion
+
+            from(components["java"])
+
+            // Maven Central requires comprehensive POM metadata
+            pom {
+                name.set(modName)
+                description.set(modDescription)
+                url.set("https://github.com/$modAuthor/$modName") // Change to your repo URL
+
+                licenses {
+                    license {
+                        name.set(modLicense)
+                        url.set("https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html")
+                        distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set(modAuthor)
+                        name.set("Rere")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/$modAuthor/$modName.git")
+                    developerConnection.set("scm:git:ssh://github.com/$modAuthor/$modName.git")
+                    url.set("https://github.com/$modAuthor/$modName")
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "Sonatype"
+            url = uri("https://central.sonatype.com/service/local/staging/deploy/maven2/")
+            credentials {
+                username = project.findProperty("sonatypeUsername")?.toString()
+                password = project.findProperty("sonatypePassword")?.toString()
+            }
+        }
+    }
+}
+
+signing {
+    // Only sign if we aren't in a dry-run local environment
+    val publishingTasks = gradle.startParameter.taskNames
+    if (publishingTasks.any { it.contains("publish") }) {
+        sign(publishing.publications["mavenJava"])
     }
 }

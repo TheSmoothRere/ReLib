@@ -7,6 +7,9 @@ import com.google.gson.JsonPrimitive;
  * Serialises {@link String} values to and from JSON primitives.
  */
 public class StringOptionSerializer implements ConfigOptionSerializer<String> {
+    /** No-arg constructor. */
+    public StringOptionSerializer() {}
+
     @Override
     public JsonElement serialize(String value) {
         return new JsonPrimitive(value);

@@ -5,7 +5,7 @@ package io.github.thesmoothrere.relib.api;
  * <p>
  * Implementations should be annotated with {@link Config @Config} and expose
  * configuration options via public no-argument methods that return
- * {@link io.github.thesmoothrere.relib.config.option.ConfigOption ConfigOption<?>}.
+ * {@link io.github.thesmoothrere.relib.config.option.ConfigOption ConfigOption}{@code <?>}.
  * </p>
  */
 public interface ConfigApi {

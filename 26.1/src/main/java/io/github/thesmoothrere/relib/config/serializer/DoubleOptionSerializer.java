@@ -7,6 +7,9 @@ import com.google.gson.JsonPrimitive;
  * Serialises {@link Double} values to and from JSON primitives.
  */
 public class DoubleOptionSerializer implements ConfigOptionSerializer<Double> {
+    /** No-arg constructor. */
+    public DoubleOptionSerializer() {}
+
     @Override
     public JsonElement serialize(Double value) {
         return new JsonPrimitive(value);

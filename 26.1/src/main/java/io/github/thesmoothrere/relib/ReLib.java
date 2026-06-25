@@ -18,6 +18,9 @@ import java.util.Collection;
  * </p>
  */
 public class ReLib implements ModInitializer {
+    /** No-arg constructor. */
+    public ReLib() {}
+
     @Override
     public void onInitialize() {
         Constants.LOGGER.info(Constants.MOD_NAME + " initialized!");

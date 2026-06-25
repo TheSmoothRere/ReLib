@@ -12,6 +12,9 @@ import java.util.List;
  * Serialises {@link ListString} values to and from JSON arrays of strings.
  */
 public class ListStringOptionSerializer implements ConfigOptionSerializer<ListString> {
+    /** No-arg constructor. */
+    public ListStringOptionSerializer() {}
+
     @Override
     public JsonElement serialize(ListString value) {
         JsonArray array = new JsonArray();
