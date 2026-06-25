@@ -16,6 +16,9 @@ General-purpose utility library for Fabric mods, originally built for TheSmoothR
 ### 1. Create a config class
 
 ```java
+import io.github.thesmoothrere.relib.config.ListString;
+import io.github.thesmoothrere.relib.config.option.*;
+
 @Config(name = "my_mod")
 public class MyModConfig implements ConfigApi {
 
@@ -24,6 +27,7 @@ public class MyModConfig implements ConfigApi {
     private final DoubleOption sensitivity = new DoubleOption("sensitivity", 0.5, 0.0, 1.0);
     private final StringOption greeting = new StringOption("greeting", "Hello!");
     private final EnumOption<MyEnum> mode = new EnumOption<>("mode", MyEnum.NORMAL);
+    private final ListStringOption favoriteColors = new ListStringOption("favorite_colors", "red", "blue");
 
     public ConfigOption<Boolean> enabled() {
         return enabled;
@@ -43,6 +47,10 @@ public class MyModConfig implements ConfigApi {
 
     public ConfigOption<MyEnum> mode() {
         return mode;
+    }
+
+    public ConfigOption<ListString> favoriteColors() {
+        return favoriteColors;
     }
 }
 ```
