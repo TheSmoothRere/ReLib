@@ -1,5 +1,6 @@
 plugins {
     id("net.fabricmc.fabric-loom")
+    id("io.github.smootheez.mc-mod-publisher")
     `maven-publish`
     signing
 }
