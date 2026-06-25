@@ -8,6 +8,9 @@ import io.github.thesmoothrere.relib.config.ListString;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Serialises {@link ListString} values to and from JSON arrays of strings.
+ */
 public class ListStringOptionSerializer implements ConfigOptionSerializer<ListString> {
     @Override
     public JsonElement serialize(ListString value) {

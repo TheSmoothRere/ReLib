@@ -5,7 +5,16 @@ import io.github.thesmoothrere.relib.config.serializer.ConfigOptionSerializer;
 import io.github.thesmoothrere.relib.config.serializer.ListStringOptionSerializer;
 import org.jspecify.annotations.NonNull;
 
+/**
+ * A configuration option that holds a {@link ListString} value (a list of strings).
+ */
 public class ListStringOption extends ConfigOption<ListString> {
+    /**
+     * Creates a list-string option with the given key and default value.
+     *
+     * @param key          the option key
+     * @param defaultValue the default value
+     */
     public ListStringOption(@NonNull String key, @NonNull ListString defaultValue) {
         super(key, defaultValue);
     }

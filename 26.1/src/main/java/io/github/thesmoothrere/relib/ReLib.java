@@ -8,10 +8,19 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import java.util.Collection;
 
+/**
+ * Main entry point for the ReLib mod.
+ * <p>
+ * On initialisation, discovers all {@link ConfigApi} implementations registered in
+ * {@code fabric.mod.json} under the {@value Constants#MOD_ID} entrypoint key, validates
+ * that each is annotated with {@link Config @Config}, and registers them with
+ * {@link ConfigManager}.
+ * </p>
+ */
 public class ReLib implements ModInitializer {
     @Override
     public void onInitialize() {
-        Constants.LOGGER.info("ReLib initialized!");
+        Constants.LOGGER.info(Constants.MOD_NAME + " initialized!");
 
         Collection<ConfigApi> configs = FabricLoader.getInstance().getEntrypoints(Constants.MOD_ID, ConfigApi.class);
         configs.forEach(config -> {
