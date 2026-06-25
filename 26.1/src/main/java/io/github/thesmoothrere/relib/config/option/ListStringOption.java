@@ -5,18 +5,20 @@ import io.github.thesmoothrere.relib.config.serializer.ConfigOptionSerializer;
 import io.github.thesmoothrere.relib.config.serializer.ListStringOptionSerializer;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Arrays;
+
 /**
  * A configuration option that holds a {@link ListString} value (a list of strings).
  */
 public class ListStringOption extends ConfigOption<ListString> {
     /**
-     * Creates a list-string option with the given key and default value.
+     * Creates a list-string option with the given key and default values.
      *
      * @param key          the option key
-     * @param defaultValue the default value
+     * @param defaultValue the default values as varargs
      */
-    public ListStringOption(@NonNull String key, @NonNull ListString defaultValue) {
-        super(key, defaultValue);
+    public ListStringOption(@NonNull String key, @NonNull String... defaultValue) {
+        super(key, new ListString(Arrays.asList(defaultValue)));
     }
 
     @Override
