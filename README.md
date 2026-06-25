@@ -90,4 +90,4 @@ ConfigManager.save(config);
 
 ## License
 
-Licensed under the **GNU Lesser General Public License v2.1**. See `LICENSE`.
+Licensed under the **GNU Lesser General Public License v2.1**. See [LICENSE](https://github.com/TheSmoothRere/ReLib/blob/main/LICENSE).

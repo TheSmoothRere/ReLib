@@ -7,7 +7,7 @@
   "icon": "assets/${id}/icon.png",
   "license": "${license}",
   "authors": [
-    "TheSmoothRere"
+    "${author}"
   ],
   "contact": {
     "homepage":"https://github.com/TheSmoothRere/ReLib",
