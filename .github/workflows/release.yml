@@ -77,5 +77,4 @@ jobs:
             ${{ steps.parse_tag.outputs.mc_version }}/build/libs/*.jar
             LICENSE
             README.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.PAT_GITHUB }}
